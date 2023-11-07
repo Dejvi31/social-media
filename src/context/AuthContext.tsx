@@ -21,10 +21,11 @@ const INITIAL_STATE = {
     checkAuthUser: async () => false as boolean,
 }
 
+
 const AuthContext = createContext<IContextType>(INITIAL_STATE)
 
 const AuthProvider = ({children} : {children: React.ReactNode}) => {
-   const [user,setUser] = useState<IUser>(INITIAL_STATE)
+   const [user,setUser] = useState<IUser>(INITIAL_USER)
    const [isLoading,setIsLoading] = useState(false)
    const [isAuthenticated,setIsAuthenticated] = useState(false)
 
@@ -69,7 +70,7 @@ const AuthProvider = ({children} : {children: React.ReactNode}) => {
     isLoading,
     isAuthenticated,
     setIsAuthenticated,
-    checkAuthUser
+    checkAuthUser,
    }
     return (
     <AuthContext.Provider value={value}>
@@ -79,3 +80,5 @@ const AuthProvider = ({children} : {children: React.ReactNode}) => {
 }
 
 export default AuthProvider;
+
+export const useUserContext = () => useContext(AuthContext)
