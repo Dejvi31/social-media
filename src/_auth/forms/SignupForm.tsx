@@ -50,6 +50,7 @@ const SignupForm =  () => {
   }
 
   const isLoggedIn = await checkAuthUser()
+  
   if(isLoggedIn) {
     form.reset()
      navigate('/')
